@@ -17,6 +17,7 @@ const login = () => {
                             <input className='btn' type="submit" value="Sign in"/>
                             <br/>
                             <p>Aren't register yet? <a href='/signup'>Please join us here</a></p>
+                            <p> <a href="/passwordforget">Forgotten password?</a></p>
                         </form>
 
                 </div>
@@ -36,6 +37,7 @@ const login = () => {
                     }
                     h2 {
                         text-align: center;
+                        margin-top: 5%;
                     }
 
                     form {
@@ -56,6 +58,7 @@ const login = () => {
                         padding: 15px;
                         background: black;
                         color: white;
+                        margin-bottom: 5%;
                     }
                     .btn:hover{
                         background:white;
@@ -63,7 +66,7 @@ const login = () => {
                     }
                     input {
                         background:black;
-                        border-radius: 2px;
+                        border-radius: 5px;
                         color:white;
                     }
                     `}

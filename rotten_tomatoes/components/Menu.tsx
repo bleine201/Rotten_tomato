@@ -10,7 +10,7 @@ const Menu = () => {
                 <nav>
                     <ul>
                         <li><a href="/"><img src={logo} alt="logo"/></a></li>
-                        <li><a href="/favorite">Favorites</a></li>
+                        {/* <li><a href="/favorite">Favorites</a></li> */}
                         <section className="login">
                             
                             <button className='signin'><a href='/login'>Login</a></button>
@@ -55,10 +55,9 @@ const Menu = () => {
         
                 }
                 .signin {
-                    background:transparent;
-                    border-radius:15px;
-                    border:3px solid #F21B42;
-                    cursor:pointer;
+                    border: none;
+                    border-radius: 5px;
+                    background: black;
                     padding: 15%;
                     color:#ffffff;
                     font-size:20px;
@@ -68,21 +67,21 @@ const Menu = () => {
                 }
                 .signin:hover {
                     background-color:#F21B42;
-                    color:black
+                    color:black;
                 }
                 .signup {
-                    background:transparent;
-                    border-radius:15px;
-                    border:3px solid black;
+                    border: none;
+                    border-radius: 5px;
+                    background: black;
+                    color: white;
                     padding: 15%;
                     cursor:pointer;
-                    color:#ffffff;
                     font-size:20px;
                     text-decoration:none;
                 }
                 .signup:hover {
-                    background-color:black;
-                    color:#F21B42;
+                    background:#022859;
+                    color:black;
                 }
                 .line {
                     border-top: 1px solid white;
