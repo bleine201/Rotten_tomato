@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { generateKeyPair } from "crypto";
 
 export default async function getMovieById(
   req: NextApiRequest,
@@ -11,30 +10,32 @@ export default async function getMovieById(
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
   });
-  if (req.method === "PUT") {
-    const statement = await db.prepare(
-      "UPDATE movies SET title= ?, summary = ?, genre= ?, producer= ?, release=?, image=?, rating=?, review=? where id = ?"
-    );
-    const result = await statement.run(
-      req.body.title,
-      req.body.summary,
-      req.body.genre,
-      req.body.producer,
-      req.body.release,
-      req.body.image,
-      req.body.rating,
-      req.body.review,
-      req.query.id
-    );
-    result.finalize();
-  }
-  if (req.method === "POST") {
-  }
 
-  if (req.method === "DELETE") {
+  const id = req.query.id;
+
+  try {
+    if (req.method === "PUT") {
+      const put = await db.run(
+        "UPDATE movies SET title= ?, summary = ? where id = ?",
+        req.body.title,
+        req.body.summary,
+        id
+      );
+      res.statusCode = 200;
+      res.json(put);
+    } else if (req.method === "DELETE") {
+      await db.run("DELETE FROM movies WHERE id = ?", id);
+      res.statusCode = 204;
+      res.json(null);
+    } else if (req.method === "GET") {
+      const get = await db.get("SELECT * FROM movies WHERE id = ?", id);
+      res.statusCode = 200;
+      res.json(get);
+    } else {
+      res.statusCode = 404;
+      res.json(null);
+    }
+  } catch (e) {
+    console.log(e);
   }
-  const movie = await db.get("select * from movies where id = ?", [
-    req.query.id,
-  ]);
-  res.json(movie);
 }

@@ -10,7 +10,18 @@ export default async function getmovies(
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
   });
-  const movies = await db.all("select * from movies");
 
-  res.json(movies);
+  if (req.method === "GET") {
+    const movies = await db.all("select * from movies");
+    res.statusCode = 200;
+    res.json(movies);
+  }
+
+  const post = await db.run(
+    "INSERT INTO users (title, summary) VALUES (?,?) ",
+    req.body.title,
+    req.body.summary
+  );
+  res.statusCode = 200;
+  res.json(post);
 }

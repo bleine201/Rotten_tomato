@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import { hash } from "bcrypt";
 
 export default async function getUserById(
   req: NextApiRequest,
@@ -11,25 +12,34 @@ export default async function getUserById(
     driver: sqlite3.Database,
   });
 
-  if (req.method === "PUT") {
-    const statement = await db.prepare(
-      "UPDATE users SET name= ?, email = ? where id = ?"
-    );
-    const result = await statement.run(
-      req.body.name,
-      req.body.email,
-      req.query.id
-    );
-    result.finalize();
-  }
+  const id = req.query.id;
 
-  if (req.method === "POST") {
+  try {
+    if (req.method === "PUT") {
+      hash(req.body.password, 12, async function (err, hash) {
+        const put = await db.run(
+          "UPDATE users SET name= ?, email = ?, password = ? where id = ?",
+          req.body.name,
+          req.body.email,
+          hash,
+          id
+        );
+        res.statusCode = 200;
+        res.json(put);
+      });
+    } else if (req.method === "DELETE") {
+      await db.run("DELETE FROM users WHERE id = ?", id);
+      res.statusCode = 204;
+      res.json(null);
+    } else if (req.method === "GET") {
+      const get = await db.get("SELECT * FROM users WHERE id = ?", id);
+      res.statusCode = 200;
+      res.json(get);
+    } else {
+      res.statusCode = 404;
+      res.json(null);
+    }
+  } catch (e) {
+    console.log(e);
   }
-
-  if (req.method === "DELETE") {
-  }
-  const person = await db.get("select * from users where id = ?", [
-    req.query.id,
-  ]);
-  res.json(person);
 }
