@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/Layout';
 import MainCarousel from '../components/MainCarousel';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 export default function Home() {
   return (
