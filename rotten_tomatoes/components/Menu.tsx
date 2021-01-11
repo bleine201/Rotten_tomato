@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap';
+import logo from '../public/logo.png';
+
 
 const Menu = () => {
     return (
@@ -8,8 +9,8 @@ const Menu = () => {
             <Head>
                 <nav>
                     <ul>
-                        <li><a href="/"><img src="#" alt="logo"/></a></li>
-                        <li><a href="#">Favorites</a></li>
+                        <li><a href="/"><img src={logo} alt="logo"/></a></li>
+                        <li><a href="/favorite">Favorites</a></li>
                         <section className="login">
                             
                             <button className='signin'><a href='/login'>Login</a></button>

@@ -8,7 +8,7 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src= "https://static.hitek.fr/img/actualite/ill_m/1609852057/spider-man-ps4-tenue-sam-raimi.jpg"  
+                    src= "https://via.placeholder.com/800x400"  
                     alt="First slide"
                     />
                     <Carousel.Caption>
@@ -19,7 +19,7 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="https://static.hitek.fr/img/actualite/ill_m/1609852057/spider-man-ps4-tenue-sam-raimi.jpg"
+                    src="https://via.placeholder.com/800x400"
                     alt="Third slide"
                     />
 
@@ -31,7 +31,7 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="https://static.hitek.fr/img/actualite/ill_m/1609852057/spider-man-ps4-tenue-sam-raimi.jpg"
+                    src="https://via.placeholder.com/800x400"
                     alt="Third slide"
                     />
 
@@ -45,7 +45,8 @@ const MainCarousel = () => {
             
                 margin-left: auto;
                 margin-right: auto;
-                width:80%;
+                width: 100%;
+                height: 500px;
                 
                 `}    
             </style>
