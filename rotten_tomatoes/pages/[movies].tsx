@@ -7,8 +7,8 @@ const Movieid = () => {
     return (
         <Layout>   
             <div className="movie">
-            <button><a href="/admin/movies">Back</a></button>
-                    <h2>{router.query.movie} <span>Rating:</span> </h2>
+            <button><a href="/">Back</a></button>
+                    <h2>Title{router.query.movie} <span>Rating:</span> </h2>
                     <h3>Poster:</h3>
                     <img src="#" alt="movie-poster"/>
                     <h3>Summary:</h3>
@@ -21,8 +21,6 @@ const Movieid = () => {
                     <p>Lorem ipsum Ltd </p>
                     <h3>Release:</h3>
                     <p>2019</p>
-                    
-                <div className="rating">Rating:</div>
             </div>
         </Layout>
     );

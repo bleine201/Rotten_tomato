@@ -9,7 +9,7 @@ const Menu = () => {
                 <nav>
                     <ul>
                         <li><a href="/"><img src="#" alt="logo"/></a></li>
-                        <li><a href="#">Bookmark</a></li>
+                        <li><a href="#">Favorites</a></li>
                         <section className="login">
                             
                             <button className='signin'><a href='/login'>Login</a></button>

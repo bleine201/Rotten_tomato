@@ -13,6 +13,7 @@
     "react": "17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "17.0.1",
+    "react-draggable": "^4.4.3",
     "sqlite": "^4.0.19"
   },
   "devDependencies": {
