@@ -1,5 +1,4 @@
--- Up
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     email TEXT,
@@ -8,7 +7,7 @@ CREATE TABLE users (
     favorite_movies TEXT
 );
 
-CREATE TABLE movies (
+CREATE TABLE IF NOT EXISTS movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     summary TEXT,
@@ -18,9 +17,4 @@ CREATE TABLE movies (
     image TEXT,
     rating INTEGER,
     review TEXT
-
 );
-
--- Down
-DROP TABLE users;
-DROP TABLE movies;
