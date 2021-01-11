@@ -1,11 +1,14 @@
-const sqlite = require("sqlite");
+const sqlite = require('sqlite');
+const sqlite3 = require('sqlite3');
 
-async function setup() {
-  const db = await sqlite.open("./mydb.sqlite");
-  await db.migrate({ force: "last" });
+(async () => {
+    // open the database
+    const db = await sqlite.open({
+      filename: './rotten_tomatoes.sqlite',
+      driver: sqlite3.Database
+    });
 
-  const users = await db.all("SELECT * FROM users");
-  //   console.log('Users:', JSON.stringify(users, null, 2));
-}
-
-setup();
+    await db.migrate({force: true});
+    const users = await db.all('select * from users');
+    console.log(JSON.stringify(users, null, 4));
+})()
