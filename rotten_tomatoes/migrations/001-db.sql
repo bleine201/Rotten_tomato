@@ -13,7 +13,7 @@ CREATE TABLE movies (
     title TEXT,
     summary TEXT,
     genre INTEGER,
-    producor TEXT,
+    producer TEXT,
     release INTEGER,
     image TEXT,
     rating INTEGER,
