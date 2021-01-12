@@ -29,15 +29,15 @@ const signup = () => {
                         max-width: 80%; 
                         border: 1px solid white;
                         margin-top: 3%;
-                        border-radius: 5px;
+                        border-radius: 8px;
                         background: white;
-                        opacity: 0.5; 
                         margin-bottom: 5%;
 
                     }
                     h2 {
                         text-align: center;
                         margin-top: 5%;
+                        color: #0093E9;
                     }
 
                     form {
@@ -60,13 +60,14 @@ const signup = () => {
                         color: white;
                     }
                     .btn:hover{
-                        background:white;
+                        background:#0093E9;
                         color:black;
                     }
                     input {
-                        background:black;
+                        background:#33ABDB;
                         border-radius: 5px;
-                        color:white;
+                        color:black;
+                        border:none;
                     }
                     `}
 
