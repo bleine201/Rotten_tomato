@@ -3,8 +3,7 @@ CREATE TABLE IF NOT EXISTS users (
     name TEXT,
     email TEXT,
     password TEXT,
-    admin INTEGER,
-    favorite_movies TEXT
+    admin INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS movies (
@@ -15,7 +14,45 @@ CREATE TABLE IF NOT EXISTS movies (
     producer TEXT,
     release INTEGER,
     image TEXT,
-    rating INTEGER,
-    review TEXT
+    average FLOAT
+
+);
+
+CREATE TABLE IF NOT EXISTS dates (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie
+
+
+);
+
+CREATE TABLE IF NOT EXISTS genres (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie
+
+);
+
+CREATE TABLE IF NOT EXISTS producers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie
+);
+
+CREATE TABLE IF NOT EXISTS favorites (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie,
+    id_user
+
+);
+
+CREATE TABLE IF NOT EXISTS ratings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie,
+    id_user
+
+);
+
+CREATE TABLE IF NOT EXISTS reviews (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_movie,
+    id_user
 
 );
