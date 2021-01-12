@@ -16,9 +16,11 @@ export default async function getMovieById(
   try {
     if (req.method === "PUT") {
       const put = await db.run(
-        "UPDATE movies SET title= ?, summary = ? where id = ?",
+        "UPDATE movies SET title= ?, summary = ?, image=?, average=? where id = ?",
         req.body.title,
         req.body.summary,
+        req.body.image,
+        req.body.average,
         id
       );
       res.statusCode = 200;

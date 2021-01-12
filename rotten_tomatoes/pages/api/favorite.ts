@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { hash } from "bcrypt";
 
-export default async function getusers(
+
+export default async function getfavorite(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -13,18 +13,17 @@ export default async function getusers(
   });
 
   if (req.method === "GET") {
-    const users = await db.all("select * from users");
-    res.json(users);
+    const favorite = await db.all("select m.title,u.name from favorites as f inner  join  users as u on (f.id_users = u.id) inner join movies as m ");
+    res.json(favorite);
   }
 
-  hash(req.body.password, 12, async function (err, hash) {
+
     const post = await db.run(
-      "INSERT INTO users (name, email, password) VALUES (?,?,?) ",
-      req.body.name,
-      req.body.email,
-      hash
+        "INSERT INTO favorites (id_movies, id_users) VALUES (?,?) ",
+        req.body.id_movies,
+        req.body.id_users,
     );
     res.statusCode = 200;
     res.json(post);
-  });
+
 }

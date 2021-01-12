@@ -10,20 +10,14 @@ export default async function getmovies(
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
   });
-
-  if (req.method === "GET") {
-    const movies = await db.all("select * from movies");
-    res.statusCode = 200;
-    res.json(movies);
-  }
-
   const post = await db.run(
-    "INSERT INTO users (title, summary, image, average) VALUES (?,?,?,?) ",
-    req.body.title,
-    req.body.summary,
-    req.body.image,
-    req.body.average,
+    "SELECT * FROM movies where date = ? AND where producer = ? AND where genre = ?",
+    req.body.date,
+    req.body.producer,
+    req.body.genre,
+   
   );
   res.statusCode = 200;
   res.json(post);
+
 }

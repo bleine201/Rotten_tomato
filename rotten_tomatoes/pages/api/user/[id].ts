@@ -18,10 +18,11 @@ export default async function getUserById(
     if (req.method === "PUT") {
       hash(req.body.password, 12, async function (err, hash) {
         const put = await db.run(
-          "UPDATE users SET name= ?, email = ?, password = ? where id = ?",
+          "UPDATE users SET name= ?, email = ?, password = ?, admin=? where id = ?",
           req.body.name,
           req.body.email,
           hash,
+          req.body.admin,
           id
         );
         res.statusCode = 200;

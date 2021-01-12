@@ -5,54 +5,36 @@ CREATE TABLE IF NOT EXISTS users (
     password TEXT,
     admin INTEGER
 );
-
 CREATE TABLE IF NOT EXISTS movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     summary TEXT,
-    genre INTEGER,
-    producer TEXT,
-    release INTEGER,
     image TEXT,
-    average FLOAT
-
+    average FLOAT,
+    date TEXT,
+    genre TEXT,
+    producer TEXT
 );
-
-CREATE TABLE IF NOT EXISTS dates (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie
-
-
-);
-
-CREATE TABLE IF NOT EXISTS genres (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie
-
-);
-
-CREATE TABLE IF NOT EXISTS producers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie
-);
-
 CREATE TABLE IF NOT EXISTS favorites (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie,
-    id_user
-
+    id_users INTEGER,
+    id_movies INTEGER,
+    FOREIGN KEY (id_users) REFERENCES users(id),
+    FOREIGN KEY (id_movies) REFERENCES movies(id)
 );
-
 CREATE TABLE IF NOT EXISTS ratings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie,
-    id_user
-
+    rating FLOAT,
+    id_movies INTEGER,
+    id_users INTEGER,
+    FOREIGN KEY (id_movies) REFERENCES movies(id),
+    FOREIGN KEY (id_users) REFERENCES users(id)
 );
-
 CREATE TABLE IF NOT EXISTS reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_movie,
-    id_user
-
+    review TEXT,
+    id_movies INTEGER,
+    id_users INTEGER,
+    FOREIGN KEY (id_movies) REFERENCES movies(id),
+    FOREIGN KEY (id_users) REFERENCES users(id)
 );
