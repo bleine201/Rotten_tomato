@@ -6,7 +6,7 @@ export default async function populateDbWithMovies(req: NextApiRequest, res: Nex
   const db = await open({
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
-  });
+  }); 
 
   if (req.method === "POST") {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=a515f43d910a4f833a9f4d101312ae92&language=en-US&page=1`;
@@ -42,7 +42,7 @@ export default async function populateDbWithMovies(req: NextApiRequest, res: Nex
       .map((movie: any) => "(?, ?, ?, ?)")
       .join(",");
     let sql =
-      "INSERT INTO movies(title, summary, release, image) VALUES " +
+      "INSERT INTO movies(title, summary, date, image) VALUES " +
       placeholders;
     console.log(sql);
     try {
@@ -53,6 +53,6 @@ export default async function populateDbWithMovies(req: NextApiRequest, res: Nex
       res.status(405).json({ message: e });
     }
   } else {
-    res.status(405).json({ message: "ERROR" });
+    res.status(405).json({ message: "ERROR 405" });
   }
 }

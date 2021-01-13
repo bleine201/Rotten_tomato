@@ -11,4 +11,7 @@ const sqlite3 = require('sqlite3');
     await db.migrate({force: true});
     const users = await db.all('select * from users');
     console.log(JSON.stringify(users, null, 4));
+
+    const movies = await db.all('select * from movies');
+    console.log(JSON.stringify(movies, null, 4));
 })()

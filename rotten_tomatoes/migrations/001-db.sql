@@ -38,3 +38,9 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (id_movies) REFERENCES movies(id),
     FOREIGN KEY (id_users) REFERENCES users(id)
 );
+
+-- DROP TABLE users;
+-- DROP TABLE movies;
+-- DROP TABLE ratings;
+-- DROP TABLE reviews;
+-- DROP TABLE favorites;
