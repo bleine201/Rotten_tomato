@@ -19,10 +19,11 @@ export default async function getusers(
 
   hash(req.body.password, 12, async function (err, hash) {
     const post = await db.run(
-      "INSERT INTO users (name, email, password) VALUES (?,?,?) ",
+      "INSERT INTO users (name, email, password, admin) VALUES (?,?,?,?) ",
       req.body.name,
       req.body.email,
-      hash
+      hash,
+      req.body.admin
     );
     res.statusCode = 200;
     res.json(post);

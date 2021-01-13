@@ -18,11 +18,14 @@ export default async function getmovies(
   }
 
   const post = await db.run(
-    "INSERT INTO users (title, summary, image, average) VALUES (?,?,?,?) ",
+    "INSERT INTO users (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
     req.body.title,
     req.body.summary,
     req.body.image,
     req.body.average,
+    req.body.date,
+    req.body.genre,
+    req.body.producer
   );
   res.statusCode = 200;
   res.json(post);
