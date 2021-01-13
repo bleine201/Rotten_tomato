@@ -5,10 +5,8 @@ import Table from 'react-bootstrap/Table';
 const index = () => {
     return (
         <Layout>
+            <a href="/admin"><button className='back'>Back</button></a>
             <div className='tbmovie'>
-            <div className='back'>
-                    <button><a href="/admin">Back</a></button>
-                </div>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -16,7 +14,7 @@ const index = () => {
                         <th>Title</th>
                         <th>Producer</th>
                         <th>Release</th>
-                        <th colSpan="3">Actions</th>
+                        <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,11 +23,67 @@ const index = () => {
                         <td>Lorem ipsum</td>
                         <td>Lorem ipsum Ltd</td>
                         <td>2019</td>
-                        <td><button><a href="/admin/movies/Lorem ipsum">See</a></button> <button><a href="/admin/movies/edit">Edit</a></button> <button><a href="#">X</a></button></td>
+                        <td><a href="/admin/movies/Lorem ipsum"><button className='see'>See</button></a> <a href="/admin/movies/edit"><button className='edit'>Edit</button></a> <a href="#"><button className='del'>X</button></a></td>
                         </tr>
                     </tbody>
                 </Table>
-                <style jsx>{`
+            </div>
+            <style jsx>{`
+                    .see {
+                        border-radius: 60px;
+                        padding: 7%;
+                        font-weight: bold;
+                        border: none;
+                        background: #EBD807;
+                        color: white;
+                        
+                    }
+                    .see:hover {
+                        background:#E5F507;
+                    }
+                    .edit {
+                        border-radius: 60px;
+                        padding: 7%;
+                        font-weight: bold;
+                        border: none;
+                        background: green;
+                        color: white;
+                    }
+
+                    .edit:hover {
+                        background:#00C716;
+                    }
+
+                    .del {
+                        border-radius: 60px;
+                        padding: 7%;
+                        padding-right: 10%;
+                        padding-left: 10%;
+                        font-weight: bold;
+                        border: none;
+                        background: #E13900;
+                        color: white;
+                    }
+
+                    .del:hover {
+                        background:#AD1800;
+                    }
+
+                    .back {
+                        margin-top: 1%;
+                        margin-left:3%;
+                        margin-bottom:3%;
+                        border: none;
+                        padding : 1%;
+                        border-radius: 5px;
+                        background: black;
+                        color: white;
+                    }
+
+                    .back:hover {
+                        background:#0093E9;
+                        color:white;
+                    }
                     .tbmovie {
                         margin-top: 2%;
                     }
@@ -41,7 +95,6 @@ const index = () => {
                     }
 
                 `}</style>
-            </div>
         </Layout>
     );
 };

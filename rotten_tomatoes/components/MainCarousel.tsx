@@ -8,7 +8,7 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src= "https://via.placeholder.com/800x400"  
+                    src= "https://otakunext.com/wp-content/uploads/2017/11/Superhero-Movies-2017-News-Cover.jpg"  
                     alt="First slide"
                     />
                     <Carousel.Caption>
@@ -19,10 +19,9 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="https://via.placeholder.com/800x400"
+                    src="https://teaser-trailer.com/wp-content/uploads/John-Wick-2-New-Banner.jpg"
                     alt="Third slide"
                     />
-
                     <Carousel.Caption>
                     <h3>Second slide label</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -31,7 +30,7 @@ const MainCarousel = () => {
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="https://via.placeholder.com/800x400"
+                    src="https://i.pinimg.com/originals/ad/2d/54/ad2d54f16f976bba2c04523564cc0fc9.jpg"
                     alt="Third slide"
                     />
 

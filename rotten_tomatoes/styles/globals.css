@@ -22,17 +22,18 @@ div .card {
   background: transparent;
   margin-bottom: 4%;
   border: none;
-  color: white;
+  color: ghostwhite;
 }
 div .card:hover {
-  background:  black;
+  background:  ghostwhite;
+  color:#0093E9;
   border-radius: 10px;
 }
 
 div .card-body {
-  
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 2px solid ghostwhite;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 div .card-title span {
