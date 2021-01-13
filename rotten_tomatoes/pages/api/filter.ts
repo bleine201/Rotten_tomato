@@ -10,21 +10,20 @@ export default async function getmovies(
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
   });
-  
+
   if (req.method === "GET") {
-  console.log(req);
+    console.log(req);
 
-  const date = req.query.date;
-  const genre = req.query.genre;
-  const producer = req.query.producer;
+    const date = req.query.date;
+    const genre = req.query.genre;
+    const producer = req.query.producer;
 
-  const post = await db.all(
-    `select * from movies where date = '${date}'
+    const post = await db.all(
+      `select * from movies where date = '${date}'
         or producer = '${producer}' 
         or genre = '${genre}'`
-  );
-  res.statusCode = 200;
-  res.json(post);
+    );
+    res.statusCode = 200;
+    res.json(post);
   }
-
 }
