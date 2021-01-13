@@ -12,13 +12,13 @@ export default async function getmovies(
   });
 
   if (req.method === "GET") {
-    const movies = await db.all("select * from movies");
+    const movies = await db.all("select m.*,(select AVG(r.rating) from ratings as r  where id_movies = m.id) as 'rating' from movies as m ");
     res.statusCode = 200;
     res.json(movies);
   }
 
   const post = await db.run(
-    "INSERT INTO users (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
+    "INSERT INTO movies (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
     req.body.title,
     req.body.summary,
     req.body.image,
