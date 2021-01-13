@@ -3,14 +3,19 @@ import styles from '../styles/Home.module.css';
 import Layout from '../components/Layout';
 import MainCarousel from '../components/MainCarousel';
 import { Card } from 'react-bootstrap';
+import Filter from '../components/Filter';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Layout>
         <main>
+          
           <MainCarousel />
         </main>
+        <nav className='filter'>
+          <Filter />
+        </nav>
         <article className={styles.movies}>
         <Card style={{ width: '20rem' }}>
           <a href="/1"><Card.Img variant="top" src="https://via.placeholder.com/1830x2024" /></a>

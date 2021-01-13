@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import logo from '../public/logo.png';
+import profile from '../public/profile.png';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const Menu = () => {
+
     return (
         <div className="Menu">
-            <Head>
                 <nav>
                     <ul>
                         <li><a href="/"><img src={logo} alt="logo"/></a></li>
@@ -14,12 +16,24 @@ const Menu = () => {
                         <section className="login">
                             
                             <button className='signin'><a href='/login'>Login</a></button>
-                            <button className='signup'><a href='/signup'>Join</a></button>
+                            <button className='signup'><a href='/signup'>Join</a></button>  
+                                        {/* WHEN LOGIN  */}
+                            {/* <Dropdown>
+                                <Dropdown.Toggle className='icon'>
+                                    <img src={profile} alt="profile-icon"/> 
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="/favorite">Favorite</Dropdown.Item>
+                                    <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                                    <Dropdown.Item href="/profileupdate">Profile Update</Dropdown.Item>
+                                    <Dropdown.Item href="#">Log Out</Dropdown.Item>
+                                </Dropdown.Menu>
+                                </Dropdown>                          */}
                     </section>
                     </ul> 
+                    
                 </nav>
                 <div className='line'></div>
-            </Head>
             <style jsx>{`
                 nav {
                     width:100%;
@@ -66,7 +80,7 @@ const Menu = () => {
                     
                 }
                 .signin:hover {
-                    background-color:#F21B42;
+                    background-color:#0378A6;
                     color:black;
                 }
                 .signup {
@@ -80,13 +94,18 @@ const Menu = () => {
                     text-decoration:none;
                 }
                 .signup:hover {
-                    background:#022859;
+                    background:#025373;
                     color:black;
                 }
                 .line {
                     border-top: 1px solid white;
                     width: 100px;
                     float: center;
+                }
+
+                .icon {
+                    background: transparent;
+                    border: none;
                 }
              `}    
             </style>

@@ -13,10 +13,11 @@ const Movieid = () => {
             <div className="movie">
                 <div className='main'>
                     <h2>Title{router.query.movie} <span>Rating</span> </h2>
+                    <div className='fav'><Favorite /></div>
                     <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="movie-poster"/>
                 </div>
                 <div className='plot'>
-                    <div className='fav'><Favorite /></div> 
+                     
                     <p className='sum'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
                     pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
                     Donec scelerisque sollicitudin enim eu venenatis.</p>

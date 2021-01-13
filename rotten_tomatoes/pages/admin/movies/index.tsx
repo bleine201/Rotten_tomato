@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 import Table from 'react-bootstrap/Table';
+import Edit from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const index = () => {
     return (
@@ -23,15 +25,16 @@ const index = () => {
                         <td>Lorem ipsum</td>
                         <td>Lorem ipsum Ltd</td>
                         <td>2019</td>
-                        <td><a href="/admin/movies/Lorem ipsum"><button className='see'>See</button></a> <a href="/admin/movies/edit"><button className='edit'>Edit</button></a> <a href="#"><button className='del'>X</button></a></td>
+                        <td><a href="/admin/movies/Lorem ipsum"><button className='see'><VisibilityIcon/></button></a> <a href="/admin/movies/edit"><button className='edit'><Edit/></button></a> <a href="#"><button className='del'>X</button></a></td>
                         </tr>
                     </tbody>
                 </Table>
             </div>
             <style jsx>{`
                     .see {
-                        border-radius: 60px;
-                        padding: 7%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                         font-weight: bold;
                         border: none;
                         background: #EBD807;
@@ -42,8 +45,9 @@ const index = () => {
                         background:#E5F507;
                     }
                     .edit {
-                        border-radius: 60px;
-                        padding: 7%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                         font-weight: bold;
                         border: none;
                         background: green;
@@ -55,10 +59,9 @@ const index = () => {
                     }
 
                     .del {
-                        border-radius: 60px;
-                        padding: 7%;
-                        padding-right: 10%;
-                        padding-left: 10%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                         font-weight: bold;
                         border: none;
                         background: #E13900;

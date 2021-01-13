@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 import Table from 'react-bootstrap/Table';
+import Edit from '@material-ui/icons/Edit';
 
 const index = () => {
     return (
@@ -23,15 +24,16 @@ const index = () => {
                         <td>Lorem ipsum</td>
                         <td>Lorem@ipsum.dolor</td>
                         <td>User</td>
-                        <td><a href="/admin/users/edit"><button className='edit'>Edit</button></a> <a href="#"><button className='del'>X</button></a></td>
+                        <td><a href="/admin/users/edit"><button className='edit'><Edit/></button></a> <a href="#"><button className='del'>X</button></a></td>
                         </tr>
                     </tbody>
                 </Table>
             </div>
             <style jsx>{`
                     .edit {
-                        border-radius: 60px;
-                        padding: 7%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                         font-weight: bold;
                         border: none;
                         background: green;
@@ -43,10 +45,9 @@ const index = () => {
                     }
 
                     .del {
-                        border-radius: 60px;
-                        padding: 7%;
-                        padding-right: 10%;
-                        padding-left: 10%;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                         font-weight: bold;
                         border: none;
                         background: #E13900;

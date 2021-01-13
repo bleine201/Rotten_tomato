@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 import { useRouter } from 'next/router';
-
+import Edit from '@material-ui/icons/Edit';
 const Movieid = () => {
     const router = useRouter();
     return (
         <Layout> 
             <a href="/admin/movies"><button className='back'>Back</button></a>
-            <a href="/admin/movies/edit"><button className='edit'>Edit</button></a>
+            <a href="/admin/movies/edit"><button className='edit'><Edit/></button></a>
             <div className="see-movie">
                 <div className='content'>
                     <div className='main'>

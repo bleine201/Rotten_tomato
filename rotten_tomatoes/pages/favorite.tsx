@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { Table } from 'react-bootstrap';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const favorite = () => {
     return (
@@ -22,7 +23,7 @@ const favorite = () => {
                             <p>Genre</p>
                             <p>Summary</p>
                         </td>
-                        <td><button className='del'>X</button></td>
+                        <td><button className='del'><DeleteIcon /></button></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -32,7 +33,7 @@ const favorite = () => {
                             <p>Genre</p>
                             <p>Summary</p>
                         </td>
-                        <td><button className='del'>X</button></td>
+                        <td><button className='del'><DeleteIcon /></button></td>
                     </tr>
                 </tbody>
                 </Table>
@@ -53,10 +54,9 @@ const favorite = () => {
                     color:white;
                 }
                 .del {
-                    border-radius: 60px;
-                    padding: 7%;
-                    padding-right: 10%;
-                    padding-left: 10%;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
                     font-weight: bold;
                     border: none;
                     background: #E13900;
