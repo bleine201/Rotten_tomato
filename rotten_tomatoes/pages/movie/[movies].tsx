@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import Favorite from '@material-ui/icons/Favorite';
 
