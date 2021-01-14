@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../../components/Layout';
 import Table from 'react-bootstrap/Table';
 import Edit from '@material-ui/icons/Edit';
@@ -6,6 +6,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { GetStaticProps } from 'next';
 import { InferGetStaticPropsType } from 'next';
+import axios from 'axios';
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -21,6 +22,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
+    const [title, setTitle] = useState("");
+    const [summary, setSummary] = useState("");
+    const [genre, setGenre] = useState("");
+    const [producer, setProducer] = useState("");
+    const [date, setDate] = useState("");
+    const [poster, setPoster] = useState("");
+
+    const onSubmit = async () => {
+
+        var id = window.location.pathname.replace("/admin/movies/edit/", "");
+
+        axios
+            .delete("http://localhost:3000/api/movie/" + id, {
+                title:title,
+                summary:summary,
+                genre:genre,
+                producer:producer,
+                date:date,
+                image:poster,
+            })
+            .then((response) => {
+                console.log(response);
+            });
+    };
+
     return (
         <Layout>
             <a href="/admin"><button className='back'>Back</button></a>
@@ -61,7 +87,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                             </a> 
                         
                             <a href="#">
-                                <button className='del'>X</button>
+                                <button className='del' onSubmit={onSubmit}>X</button>
                             </a>
                         </td>
                         </tr>
