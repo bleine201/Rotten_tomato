@@ -1,38 +1,17 @@
 import React, {useState} from 'react';
 import Layout from '../../../../components/Layout';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const edit = () => {
-    const [title, setTitle] = useState("");
-    const [summary, setSummary] = useState("");
-    const [genre, setGenre] = useState("");
-    const [producer, setProducer] = useState("");
-    const [date, setDate] = useState("");
-    const [poster, setPoster] = useState("");
-
-    const onSubmit = async () => {
-
-        var id = window.location.pathname.replace("/admin/movies/edit/", "");
-
-        axios
-            .put("http://localhost:3000/api/movie/" + id, {
-                title:title,
-                summary:summary,
-                genre:genre,
-                producer:producer,
-                date:date,
-                image:poster,
-            })
-            .then((response) => {
-                console.log(response);
-            });
-    };
+    const router = useRouter();
+    
     return (
         <Layout>
             <a href="/admin/movies"><button className='back'>Back</button></a>
              <div className="edit-movie">
                     <h2>Edit Movie</h2>
-                    <form action="#">
+                    <form action="javascript:void(0)" onSubmit={onSubmit}>
                         <p>Title:</p>
                         <input type="text" name="title" placeholder="title" /><br/>
                         <p>Summary:</p>
