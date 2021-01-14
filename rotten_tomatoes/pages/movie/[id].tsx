@@ -1,10 +1,36 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import Favorite from '@material-ui/icons/Favorite';
+import { GetStaticProps } from 'next';
+import { GetStaticPaths } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
+export async function getStaticPaths() {
+    const res = await fetch('http://localhost:3000/api/allMovies')
+    const movies = await res.json()
 
-const Movieid = () => {
+    const paths = movies.map((movie: { id: { toString: () => any; }; }) => ({
+        params: { id: movie.id.toString() },
+        
+      }))
+    
+      return { paths, fallback:false}
+}
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  
+    const res = await fetch(`http://localhost:3000/api/movie/${params.id}`);
+    const movie = await res.json();
+
+    return {
+      props: {
+        movie,
+      },
+    }
+}
+
+const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const router = useRouter();
 
     return (
@@ -12,18 +38,16 @@ const Movieid = () => {
             <a href="/"><button className='back'>Back</button></a>
             <div className="movie">
                 <div className='main'>
-                    <h2>Title{router.query.movie} <span>Rating</span> </h2>
+                    <h2>{movie.title} <span>{movie.rating}</span> </h2>
                     <div className='fav'><Favorite /></div>
-                    <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="movie-poster"/>
+                    <img src={`https://image.tmdb.org/t/p/original${movie.image}`} alt="movie-poster"/>
                 </div>
                 <div className='plot'>
                      
-                    <p className='sum'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                    pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
-                    Donec scelerisque sollicitudin enim eu venenatis.</p>
-                    <p><span>Genre:</span> Lorem</p>
-                    <p><span>Producer:</span> Lorem ipsum Ltd </p>
-                    <p><span>Release:</span> 2019</p>
+                    <p className='sum'>{movie.summary}</p>
+                    <p><span>Genre:</span> {movie.genre}</p>
+                    <p><span>Producer:</span> {movie.producer} </p>
+                    <p><span>Release:</span> {movie.date}</p>
                 </div>
             </div>
             <section className="comment">

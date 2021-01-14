@@ -4,8 +4,12 @@ import Layout from '../components/Layout';
 import MainCarousel from '../components/MainCarousel';
 import { Card } from 'react-bootstrap';
 import Filter from '../components/Filter';
+import { GetStaticProps } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
-export default function Home() {
+
+
+export default function Home({ movies }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
       <Layout>
@@ -16,99 +20,32 @@ export default function Home() {
         <nav className='filter'>
           <Filter />
         </nav>
-        <article className={styles.movies}>
+          <article className={styles.mov}>
+          {movies.map((movie) => (
         <Card style={{ width: '20rem' }}>
-          <a href="/1"><Card.Img variant="top" src="https://via.placeholder.com/1830x2024" /></a>
+          <a href={`/movie/${movie.id}`}><Card.Img variant="top" src={`https://image.tmdb.org/t/p/original${movie.image}`}/></a>
           <Card.Body>
-            <Card.Title>Title Movie <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
+            <Card.Title>{movie.title}<span>{movie.rating}</span></Card.Title>
+            <Card.Text>{movie.summary}</Card.Text>
           </Card.Body>
       </Card>
-      {/* <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card>
-      <Card style={{ width: '20rem' }}>
-          <Card.Img variant="top" src="https://via.placeholder.com/1830x2024" />
-          <Card.Body>
-            <Card.Title>Card Title <span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-          </Card.Body>
-      </Card> */}
+      ))} 
         </article>
+        
+        
       </Layout>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  
+    const res = await fetch('http://localhost:3000/api/allMovies');
+    const movies = await res.json();
+
+    return {
+      props: {
+        movies,
+      },
+    }
 }

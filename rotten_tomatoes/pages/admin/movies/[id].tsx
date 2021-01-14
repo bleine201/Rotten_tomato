@@ -2,7 +2,34 @@ import React from 'react';
 import Layout from '../../../components/Layout';
 import { useRouter } from 'next/router';
 import Edit from '@material-ui/icons/Edit';
-const Movieid = () => {
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { InferGetStaticPropsType } from 'next';
+import { Movie } from '@material-ui/icons';
+
+export async function getStaticPaths() {
+    const res = await fetch('http://localhost:3000/api/allMovies')
+    const movies = await res.json()
+
+    const paths = movies.map((movie: { id: { toString: () => any; }; }) => ({
+        params: { id: movie.id.toString() },
+        
+      }))
+    
+      return { paths, fallback:false}
+}
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  
+    const res = await fetch(`http://localhost:3000/api/movie/${params.id}`);
+    const movie = await res.json();
+
+    return {
+      props: {
+        movie,
+      },
+    }
+}
+const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const router = useRouter();
     return (
         <Layout> 
@@ -11,19 +38,17 @@ const Movieid = () => {
             <div className="see-movie">
                 <div className='content'>
                     <div className='main'>
-                        <h2>{router.query.movie}</h2>
-                        <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="movie-poster"/>
+                        <h2>{movie.title}</h2>
+                        <img src={`https://image.tmdb.org/t/p/original${movie.image}`} alt="movie-poster"/>
                     </div> 
                     <div className='plot'>
-                        <p className='sum'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                        pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
-                        Donec scelerisque sollicitudin enim eu venenatis.</p>
+                        <p className='sum'>{movie.summary}</p>
                         <h3>Genre:</h3>
-                        <p>Lorem</p>
+                        <p>{movie.genre}</p>
                         <h3>Producer:</h3>
-                        <p>Lorem ipsum Ltd</p>
+                        <p>{movie.producer}</p>
                         <h3>Release:</h3>
-                        <p>2019</p>
+                        <p>{movie.date}</p>
                     </div>
                 </div>
                 <div className="rating">
