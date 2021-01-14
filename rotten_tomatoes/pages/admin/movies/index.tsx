@@ -32,6 +32,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <Layout>
             <a href="/admin"><button className='back'>Back</button></a>
+            <a href="/admin/movies/add"><button className="add"><AddCircleIcon/></button></a>
             <div className='tbmovie'>
                 <Table striped bordered hover>
                     <thead>
@@ -56,13 +57,8 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                                     <VisibilityIcon/>
                                 </button>
                             </a> 
-                            <a href="/admin/movies/add">
-                                <button className="add">
-                                    <AddCircleIcon/>
-                                </button>
-                            </a>
                         
-                            <a href="/admin/movies/edit">
+                            <a href={`movies/edit/${movie.id}`}>
                                 <button className='edit'>
                                     <Edit/>
                                 </button>
@@ -78,8 +74,6 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </Table>
 
                 
-        
-      
             </div>
             <style jsx>{`
                     .see {
@@ -140,6 +134,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                     .back {
                         margin-top: 1%;
                         margin-left:3%;
+                        margin-right:3%;
                         margin-bottom:3%;
                         border: none;
                         padding : 1%;
