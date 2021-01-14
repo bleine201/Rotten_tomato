@@ -1,7 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../../../components/Layout';
+import axios from 'axios';
 
 const edit = () => {
+    const [title, setTitle] = useState("");
+    const [summary, setSummary] = useState("");
+    const [genre, setGenre] = useState("");
+    const [producer, setProducer] = useState("");
+    const [date, setDate] = useState("");
+    const [poster, setPoster] = useState("");
+
+    const onSubmit = async () => {
+        axios
+            .put("http://localhost:3000/api/allMovies", {
+                title:title,
+                summary:summary,
+                genre:genre,
+                producer:producer,
+                date:date,
+                image:poster,
+            })
+            .then((response) => {
+                console.log(response);
+            });
+    };
     return (
         <Layout>
             <a href="/admin/movies"><button className='back'>Back</button></a>
