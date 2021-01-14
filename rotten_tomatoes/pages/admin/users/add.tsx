@@ -1,13 +1,37 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
+import axios from 'axios';
+
+
+axios.post('http://localhost:3000/api/allUsers').then(response => {
+  console.log(response);
+});
+
+
+
 
 const add = () => {
+
+  
+
+
+
+ 
+   
+
+
+    const onSubmit = (async () => {
+
+         alert('dsfdsf')
+         var inputValue = (<HTMLInputElement>document.getElementById(elementId)).value;
+      });
+
     return (
         <Layout>
             <a href="/admin/users"><button className='back'>Back</button></a>
              <div className="edit-user">
                     <h2>Add a User</h2>
-                    <form action="#">
+                    <form action="#" onSubmit={onSubmit}>
                         <p>Username:</p>
                         <input type="text" placeholder="Username" disabled="disabled"/><br/>
                         <p>Email:</p>

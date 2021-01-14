@@ -1,26 +1,21 @@
-import axios from 'axios';
-
-axios.get('http://localhost:3000/movie').then(response => {
-  console.log(response);
-});
-
-
-
 
 import React from "react";
 import Layout from "../../../components/Layout";
 import Table from "react-bootstrap/Table";
 import Edit from "@material-ui/icons/Edit";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { GetStaticProps } from 'next';
+import { InferGetStaticPropsType } from 'next'
 
-const index = () => {
-  return (
-    <Layout>
-      <div className="tbuser">
-        <a href="/admin">
-          <button className="back">Back</button>
-        </a>
-        <Table striped bordered hover>
+
+export default function index({ users }: InferGetStaticPropsType<typeof getStaticProps>) {
+    return (
+        <Layout>
+        <div className="tbuser">
+          <a href="/admin">
+            <button className="back">Back</button>
+          </a>
+          <Table striped bordered hover>
           <thead>
             <tr>
               <th>ID</th>
@@ -30,14 +25,16 @@ const index = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Lorem ipsum</td>
-              <td>Lorem@ipsum.dolor</td>
-              <td>User</td>
+              <tbody>
+              {users.map((user) => (
+            <tr >
+            
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.admin}</td>
               <td>
-              <a href="/admin/movies/add">
+              <a href="/admin/users/add">
                   <button className="add">
                     <AddCircleIcon/>
                   </button>
@@ -52,10 +49,11 @@ const index = () => {
                 </a>
               </td>
             </tr>
+            ))} 
           </tbody>
         </Table>
-      </div>
-      <style jsx>{`
+        </div>
+        <style jsx>{`
         .edit {
           height: 50px;
           width: 50px;
@@ -124,7 +122,21 @@ const index = () => {
         }
       `}</style>
     </Layout>
-  );
-};
+      
+    
+    )
+  }
+  
+  export const getStaticProps: GetStaticProps = async (context) => {
+    
+      const res = await fetch('http://localhost:3000/api/allUsers');
+      const users = await res.json();
+  
+      return {
+        props: {
+          users,
+        },
+      }
+  }
 
-export default index;
+// export default index;
