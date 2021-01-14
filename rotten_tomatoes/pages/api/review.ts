@@ -17,7 +17,7 @@ export default async function getfavorite(
     );
     res.json(review);
   }
-
+  if (req.body.review != "") {
   const post = await db.run(
     "INSERT INTO reviews (review, id_movies, id_users) VALUES (?,?,?) ",
     req.body.review,
@@ -26,4 +26,4 @@ export default async function getfavorite(
   );
   res.statusCode = 200;
   res.json(post);
-}
+}}

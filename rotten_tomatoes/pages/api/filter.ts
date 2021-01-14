@@ -18,6 +18,7 @@ export default async function getmovies(
     const genre = req.query.genre;
     const producer = req.query.producer;
 
+    
     const post = await db.all(
       `select * from movies where date = '${date}'
         or producer = '${producer}' 

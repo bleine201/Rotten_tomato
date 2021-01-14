@@ -18,17 +18,18 @@ export default async function getmovies(
     res.statusCode = 200;
     res.json(movies);
   }
-
-  const post = await db.run(
-    "INSERT INTO movies (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
-    req.body.title,
-    req.body.summary,
-    req.body.image,
-    req.body.average,
-    req.body.date,
-    req.body.genre,
-    req.body.producer
-  );
-  res.statusCode = 200;
-  res.json(post);
+  if (req.body.title != "") {
+    const post = await db.run(
+      "INSERT INTO movies (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
+      req.body.title,
+      req.body.summary,
+      req.body.image,
+      req.body.average,
+      req.body.date,
+      req.body.genre,
+      req.body.producer
+    );
+    res.statusCode = 200;
+    res.json(post);
+  }
 }
