@@ -114,52 +114,50 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                     }
 
                     .edit:hover {
-                        background:#00C716;
+                    background: #00c716;
                     }
 
                     .del {
-                        height: 50px;
-                        width: 50px;
-                        border-radius: 50%;
-                        font-weight: bold;
-                        border: none;
-                        background: #E13900;
-                        color: white;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    font-weight: bold;
+                    border: none;
+                    background: #e13900;
+                    color: white;
                     }
 
                     .del:hover {
-                        background:#AD1800;
+                    background: #ad1800;
                     }
 
                     .back {
-                        margin-top: 1%;
-                        margin-left:3%;
-                        margin-right:3%;
-                        margin-bottom:3%;
-                        border: none;
-                        padding : 1%;
-                        border-radius: 5px;
-                        background: black;
-                        color: white;
+                    margin-top: 1%;
+                    margin-left: 3%;
+                    margin-bottom: 3%;
+                    border: none;
+                    padding: 1%;
+                    border-radius: 5px;
+                    background: black;
+                    color: white;
                     }
 
                     .back:hover {
-                        background:#0093E9;
-                        color:white;
+                    background: #0093e9;
+                    color: white;
                     }
                     .tbmovie {
-                        margin-top: 2%;
+                    margin-top: 2%;
                     }
                     th {
-                        color:white;
+                    color: white;
                     }
                     td {
-                        color:white;
+                    color: white;
                     }
-
-                `}</style>
-        </Layout>
-    );
+      `}</style>
+    </Layout>
+  );
 };
 
 export default index;

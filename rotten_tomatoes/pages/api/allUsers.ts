@@ -16,16 +16,21 @@ export default async function getusers(
     const users = await db.all("select * from users");
     res.json(users);
   }
-
-  hash(req.body.password, 12, async function (err, hash) {
-    const post = await db.run(
-      "INSERT INTO users (name, email, password, admin) VALUES (?,?,?,?) ",
-      req.body.name,
-      req.body.email,
-      hash,
-      req.body.admin
-    );
-    res.statusCode = 200;
-    res.json(post);
-  });
+  if(req.method === "POST"){
+    hash(req.body.password, 12, async function (err, hash) {
+      if(req.body.name  !=   ""){
+        const post = await db.run(
+          "INSERT INTO users (name, email, password, admin) VALUES (?,?,?,?) ",
+          req.body.name,
+          req.body.email,
+          hash,
+          req.body.admin
+        );
+        res.statusCode = 200;
+        res.json(post);
+      }
+     
+    });
+  }
+ 
 }
