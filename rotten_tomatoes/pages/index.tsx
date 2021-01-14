@@ -19,21 +19,18 @@ export default function Home({ movies }) {
         <nav className='filter'>
           <Filter />
         </nav>
-
-        {movies.map((movie) => (
           <article className={styles.mov}>
+          {movies.map((movie) => (
         <Card style={{ width: '20rem' }}>
-          <a href="/1"><Card.Img variant="top" src="https://via.placeholder.com/1830x2024" /></a>
+          <a href="/1"><Card.Img variant="top" src={movie.image} /></a>
           <Card.Body>
-            <Card.Title>{movie.title}<span>4.9</span></Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
+            <Card.Title>{movie.title}<span>{movie.rating}</span></Card.Title>
+            <Card.Text>{movie.summary}</Card.Text>
           </Card.Body>
       </Card>
+      ))}
         </article>
-        ))}
+        
         
       </Layout>
     </div>
