@@ -2,20 +2,21 @@ import { useState } from "react";
 import Layout from "../../../components/Layout";
 import axios from "axios";
 
-axios.post("http://localhost:3000/api/allUsers").then((response) => {
-  console.log(response);
-});
-
 const add = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [admin, setAdmin] = useState("");
 
   const onSubmit = async () => {
-
-axios.post("http://localhost:3000/api/allUsers",{name:username,email:email,admin:admin}).then((response) => {
-    console.log(response);
-  });
+    axios
+      .post("http://localhost:3000/api/allUsers", {
+        name: username,
+        email: email,
+        admin: admin,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
