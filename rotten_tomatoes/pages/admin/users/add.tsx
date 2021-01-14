@@ -26,7 +26,7 @@ const add = () => {
       </a>
       <div className="edit-user">
         <h2>Add a User</h2>
-        <form action="#" onSubmit={onSubmit}>
+        <form action="javascript:void(0)" onSubmit={onSubmit}>
           <p>Username:</p>
           <input
             type="text"
