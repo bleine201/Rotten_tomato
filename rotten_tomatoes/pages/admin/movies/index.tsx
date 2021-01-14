@@ -3,6 +3,7 @@ import Layout from '../../../components/Layout';
 import Table from 'react-bootstrap/Table';
 import Edit from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { GetStaticProps } from 'next';
 import { InferGetStaticPropsType } from 'next';
 
@@ -41,7 +42,28 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         <td>{movie.title}</td>
                         <td>{movie.producer}</td>
                         <td>{movie.date}</td>
-                        <td><a href={`movies/${movie.id}`}><button className='see'><VisibilityIcon/></button></a> <a href="/admin/movies/edit"><button className='edit'><Edit/></button></a> <a href="#"><button className='del'>X</button></a></td>
+                        <td>
+                            <a href={`movies/${movie.id}`}>
+                                <button className='see'>
+                                    <VisibilityIcon/>
+                                </button>
+                            </a> 
+                            <a href="/admin/movies/add">
+                                <button className="add">
+                                    <AddCircleIcon/>
+                                </button>
+                            </a>
+                        
+                            <a href="/admin/movies/edit">
+                                <button className='edit'>
+                                    <Edit/>
+                                </button>
+                            </a> 
+                        
+                            <a href="#">
+                                <button className='del'>X</button>
+                            </a>
+                        </td>
                         </tr>
                         ))} 
                     </tbody>
@@ -65,6 +87,20 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                     .see:hover {
                         background:#E5F507;
                     }
+                    .add {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
+                        font-weight: bold;
+                        border: none;
+                        background: blue;
+                        color: white;
+                      }
+            
+                    .add:hover {
+                        background: #00c716;
+                      }
+                          
                     .edit {
                         height: 50px;
                         width: 50px;
