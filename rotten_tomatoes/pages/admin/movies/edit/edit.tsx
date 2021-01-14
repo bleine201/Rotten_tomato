@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Layout from '../../../components/Layout';
+import Layout from '../../../../components/Layout';
 import axios from 'axios';
 
 const edit = () => {
@@ -11,8 +11,11 @@ const edit = () => {
     const [poster, setPoster] = useState("");
 
     const onSubmit = async () => {
+
+        var id = window.location.pathname.replace("/admin/movies/edit/", "");
+
         axios
-            .put("http://localhost:3000/api/allMovies", {
+            .put("http://localhost:3000/api/movie/" + id, {
                 title:title,
                 summary:summary,
                 genre:genre,
