@@ -22,30 +22,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
-    const [title, setTitle] = useState("");
-    const [summary, setSummary] = useState("");
-    const [genre, setGenre] = useState("");
-    const [producer, setProducer] = useState("");
-    const [date, setDate] = useState("");
-    const [poster, setPoster] = useState("");
-
-    const onSubmit = async () => {
-
-        var id = window.location.pathname.replace("/admin/movies/edit/", "");
-
-        axios
-            .delete("http://localhost:3000/api/movie/" + id, {
-                title:title,
-                summary:summary,
-                genre:genre,
-                producer:producer,
-                date:date,
-                image:poster,
-            })
-            .then((response) => {
-                console.log(response);
-            });
-    };
+    const onSubmit = async (id) => {
+        axios.delete("http://localhost:3000/api/movie/" + id).then((response) => {
+          console.log(response);
+          window.location.reload();
+        });
+      };
 
     return (
         <Layout>
@@ -87,7 +69,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                             </a> 
                         
                             <a href="#">
-                                <button className='del' onSubmit={onSubmit}>X</button>
+                                <button className='del' onClick={() => onSubmit(movie.id)}>X</button>
                             </a>
                         </td>
                         </tr>
