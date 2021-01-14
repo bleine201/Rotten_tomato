@@ -38,12 +38,12 @@ export default function index({ users }: InferGetStaticPropsType<typeof getStati
                   <button className="add">
                     <AddCircleIcon/>
                   </button>
-                </a>{" "}
-                <a href="/admin/users/edit">
+                </a>
+                <a href={`/admin/users/edit/${user.id}` }  >
                   <button className="edit">
                     <Edit />
                   </button>
-                </a>{" "}
+                </a>
                 <a href="#">
                   <button className="del">X</button>
                 </a>

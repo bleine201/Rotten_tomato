@@ -1,25 +1,64 @@
-import React from 'react';
-import Layout from '../../../components/Layout';
+import React from "react";
+import Layout from "../../../../components/Layout";
+import axios from "axios";
+
+import { useState } from "react";
 
 const edit = () => {
-    return (
-        <Layout>
-            <a href="/admin/users"><button className='back'>Back</button></a>
-             <div className="edit-user">
-                    <h2>Edit User</h2>
-                    <form action="#">
-                        <p>Username:</p>
-                        <input type="text" placeholder="Username" disabled="disabled"/><br/>
-                        <p>Email:</p>
-                        <input type="text" placeholder="Email" disabled="disabled"/><br/>
-                        <div className='admin'>
-                            <p>Admin:</p>
-                            <input type="checkbox" name="Admin" id="admin"/><br/>
-                        </div>
-                        <input type="submit" value="Edit" className='smb'/>
-                    </form>
-                </div>
-                <style jsx>{`
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [admin, setAdmin] = useState("");
+
+  const onSubmit = async () => {
+    var id = window.location.pathname.replace("/admin/users/edit/", "");
+    axios
+      .put("http://localhost:3000/api/user/" + id, {
+        name: username,
+        email: email,
+        admin: admin,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
+  return (
+    <Layout>
+      <a href="/admin/users">
+        <button className="back">Back</button>
+      </a>
+      <div className="edit-user">
+        <h2>Edit User</h2>
+        <form action="javascript:void(0)" onSubmit={onSubmit}>
+          <p>Username:</p>
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={(event) => setUsername(event.target.value)}
+          />
+          <br />
+          <p>Email:</p>
+          <input
+            type="text"
+            placeholder="Email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <br />
+          <div className="admin">
+            <p>Admin:</p>
+            <select
+              name=""
+              id=""
+              onChange={(event) => setAdmin(event.target.value)}
+            >
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <input type="submit" value="Add" className="smb" />
+        </form>
+      </div>
+      <style jsx>{`
 
                     .back {
                         margin-top: 3%;
@@ -86,8 +125,8 @@ const edit = () => {
                 }
 
                 `}</style>
-        </Layout>
-    );
+    </Layout>
+  );
 };
 
 export default edit;
