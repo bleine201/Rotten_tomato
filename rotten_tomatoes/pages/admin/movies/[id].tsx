@@ -34,7 +34,7 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <Layout> 
             <a href="/admin/movies"><button className='back'>Back</button></a>
-            <a href="/admin/movies/edit"><button className='edit'><Edit/></button></a>
+            <a href={`movies/edit/${movie.id}`}><button className='edit'><Edit/></button></a>
             <div className="see-movie">
                 <div className='content'>
                     <div className='main'>
