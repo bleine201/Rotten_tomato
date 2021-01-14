@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 
-const edit = () => {
+const add = () => {
     return (
         <Layout>
             <a href="/admin/users"><button className='back'>Back</button></a>
              <div className="edit-user">
-                    <h2>Edit User</h2>
+                    <h2>Add a User</h2>
                     <form action="#">
                         <p>Username:</p>
                         <input type="text" placeholder="Username" disabled="disabled"/><br/>
@@ -51,7 +51,6 @@ const edit = () => {
                         border-radius: 8px;
                         background: white;
                     }
-                
                     th {
                         color:white;
                     }
@@ -90,4 +89,4 @@ const edit = () => {
     );
 };
 
-export default edit;
+export default add;

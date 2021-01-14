@@ -1,22 +1,26 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 
-const edit = () => {
+const add = () => {
     return (
         <Layout>
-            <a href="/admin/users"><button className='back'>Back</button></a>
-             <div className="edit-user">
-                    <h2>Edit User</h2>
+            <a href="/admin/movies"><button className='back'>Back</button></a>
+             <div className="edit-movie">
+                    <h2>Add a Movie</h2>
                     <form action="#">
-                        <p>Username:</p>
-                        <input type="text" placeholder="Username" disabled="disabled"/><br/>
-                        <p>Email:</p>
-                        <input type="text" placeholder="Email" disabled="disabled"/><br/>
-                        <div className='admin'>
-                            <p>Admin:</p>
-                            <input type="checkbox" name="Admin" id="admin"/><br/>
-                        </div>
-                        <input type="submit" value="Edit" className='smb'/>
+                        <p>Title:</p>
+                        <input type="text" name="title" placeholder="title" /><br/>
+                        <p>Summary:</p>
+                        <input type="text" name="summary" placeholder="summary" className='sum' /><br/>
+                        <p>Genre:</p>
+                        <input type="text" placeholder="genre"/><br/>
+                        <p>Producer:</p>
+                        <input type="text" name="producer" placeholder="producer"/><br/>
+                        <p>Date:</p>
+                        <input type="text" name="release" placeholder="release"/><br/>
+                        <p>Poster:</p>
+                        <input type="file" name="image"/><br/>
+                        <input type="submit" name="genre" value="Edit" className='smb'/><br/>
                     </form>
                 </div>
                 <style jsx>{`
@@ -40,7 +44,7 @@ const edit = () => {
                         margin-top: 5%;
                         color: #0093E9;
                     }
-                    .edit-user {
+                    .edit-movie {
                         color: #0A0924;
                         display: block;
                         margin: auto;
@@ -50,13 +54,10 @@ const edit = () => {
                         margin-top: 2%;
                         border-radius: 8px;
                         background: white;
+                        margin-bottom:3%;
                     }
-                
-                    th {
-                        color:white;
-                    }
-                    td {
-                        color:white;
+                    .sum {
+                        height:100px;
                     }
                     p {
                         text-align:center;
@@ -90,4 +91,4 @@ const edit = () => {
     );
 };
 
-export default edit;
+export default add;
