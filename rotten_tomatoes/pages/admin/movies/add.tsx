@@ -1,25 +1,83 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Layout from '../../../components/Layout';
+import axios from 'axios';
 
 const add = () => {
+    const [title, setTitle] = useState("");
+    const [summary, setSummary] = useState("");
+    const [genre, setGenre] = useState("");
+    const [producer, setProducer] = useState("");
+    const [date, setDate] = useState("");
+    const [poster, setPoster] = useState("");
+
+    const onSubmit = async () => {
+        axios
+            .post("http://localhost:3000/api/allMovies", {
+                title:title,
+                summary:summary,
+                genre:genre,
+                producer:producer,
+                date:date,
+                image:poster,
+            })
+            .then((response) => {
+                console.log(response);
+            });
+    };
+
     return (
         <Layout>
             <a href="/admin/movies"><button className='back'>Back</button></a>
              <div className="edit-movie">
                     <h2>Add a Movie</h2>
-                    <form action="#">
+                    <form action="#" onSubmit={onSubmit}>
                         <p>Title:</p>
-                        <input type="text" name="title" placeholder="title" /><br/>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            placeholder="title" 
+                            onChange={(event) => setTitle(event.target.value)}
+                        />
+                        <br/>
                         <p>Summary:</p>
-                        <input type="text" name="summary" placeholder="summary" className='sum' /><br/>
+                        <input 
+                            type="text" 
+                            name="summary" 
+                            placeholder="summary" 
+                            className='sum' 
+                            onChange={(event) => setSummary(event.target.value)}
+                        />
+                        <br/>
                         <p>Genre:</p>
-                        <input type="text" placeholder="genre"/><br/>
+                        <input 
+                            type="text" 
+                            placeholder="genre"
+                            onChange={(event) => setGenre(event.target.value)}
+                        />
+                        <br/>
                         <p>Producer:</p>
-                        <input type="text" name="producer" placeholder="producer"/><br/>
+                        <input 
+                            type="text" 
+                            name="producer" 
+                            placeholder="producer"
+                            onChange={(event) => setProducer(event.target.value)}
+                            />
+                        <br/>
                         <p>Date:</p>
-                        <input type="text" name="release" placeholder="release"/><br/>
+                        <input 
+                            type="text" 
+                            name="date" 
+                            placeholder="date"
+                            onChange={(event) => setDate(event.target.value)}
+                        />
+                        <br/>
                         <p>Poster:</p>
-                        <input type="file" name="image"/><br/>
+                        <input 
+                            type="text" 
+                            name="image"
+                            onChange={(event) => setPoster(event.target.value)}
+                        />
+                        <br/>
                         <input type="submit" name="genre" value="Add" className='smb'/><br/>
                     </form>
                 </div>
