@@ -5,7 +5,7 @@ import MainCarousel from '../components/MainCarousel';
 import { Card } from 'react-bootstrap';
 import Filter from '../components/Filter';
 import { GetStaticProps } from 'next';
-import { InferGetStaticPropsType } from 'next'
+import { InferGetStaticPropsType } from 'next';
 
 
 
@@ -23,7 +23,7 @@ export default function Home({ movies }: InferGetStaticPropsType<typeof getStati
           <article className={styles.mov}>
           {movies.map((movie) => (
         <Card style={{ width: '20rem' }}>
-          <a href="/movie/1"><Card.Img variant="top" src={`https://image.tmdb.org/t/p/original${movie.image}`}/></a>
+          <a href={`/movie/${movie.id}`}><Card.Img variant="top" src={`https://image.tmdb.org/t/p/original${movie.image}`}/></a>
           <Card.Body>
             <Card.Title>{movie.title}<span>{movie.rating}</span></Card.Title>
             <Card.Text>{movie.summary}</Card.Text>
