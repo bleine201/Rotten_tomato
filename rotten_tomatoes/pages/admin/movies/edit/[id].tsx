@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Layout from '../../../../components/Layout';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 
 const edit = () => {
     const router = useRouter();
@@ -10,8 +9,8 @@ const edit = () => {
         <Layout>
             <a href="/admin/movies"><button className='back'>Back</button></a>
              <div className="edit-movie">
-                    <h2>Edit Movie</h2>
-                    <form action="javascript:void(0)" onSubmit={onSubmit}>
+                    <h2>Edit Movie {router.query.edit} </h2>
+                    <form action="#">
                         <p>Title:</p>
                         <input type="text" name="title" placeholder="title" /><br/>
                         <p>Summary:</p>
