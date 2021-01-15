@@ -91,6 +91,7 @@ export default function index({
           border: none;
           background: blue;
           color: white;
+          margin-left:3%;
         }
 
         .add:hover {

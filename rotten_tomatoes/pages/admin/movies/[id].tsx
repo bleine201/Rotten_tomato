@@ -49,11 +49,9 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         <p>{movie.producer}</p>
                         <h3>Release:</h3>
                         <p>{movie.date}</p>
+                        <h3>Average rating:</h3>
+                        <p>{movie.rating}</p>
                     </div>
-                </div>
-                <div className="rating">
-                    <h3>Rating:</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Line_graph.png" alt="rating-graph"/>
                 </div>
             </div>
             <style jsx>{`

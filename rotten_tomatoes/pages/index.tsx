@@ -50,7 +50,6 @@ export default function Home({
           <a href="#up">
             <button className="aw"><ArrowUpwardIcon/></button>
           </a>
-
         </div>
       </Layout>
     </div>

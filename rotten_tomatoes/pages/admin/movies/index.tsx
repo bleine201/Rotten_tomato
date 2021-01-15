@@ -7,6 +7,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { GetStaticProps } from 'next';
 import { InferGetStaticPropsType } from 'next';
 import axios from 'axios';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -31,7 +32,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
     return (
         <Layout>
-            <a href="/admin"><button className='back'>Back</button></a>
+            <a href="/admin" id="up"><button className='back'>Back</button></a>
             <a href="/admin/movies/add"><button className="add"><AddCircleIcon/></button></a>
             <div className='tbmovie'>
                 <Table striped bordered hover>
@@ -73,7 +74,11 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </tbody>
                 </Table>
 
-                
+                <div className="arrow">
+          <a href="#up">
+            <button className="aw"><ArrowUpwardIcon/></button>
+          </a>
+        </div>
             </div>
             <style jsx>{`
                     .see {
@@ -97,6 +102,7 @@ const index = ({ movies }: InferGetStaticPropsType<typeof getStaticProps>) => {
                         border: none;
                         background: blue;
                         color: white;
+                        margin-left:3%;
                       }
             
                     .add:hover {
