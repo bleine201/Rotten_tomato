@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const [rating, setRating] = useState("");
+  const [review, setReview] = useState("");
  
 
   const onSubmit = async () => {
@@ -49,6 +50,22 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
         window.location.reload()
       });
   };
+
+  const addReview = async () => {
+    var id = window.location.pathname.replace("/movie/", "");
+
+    axios
+        .post("http://localhost:3000/api/postReview", {
+            review:review,
+            id_movies:id,
+            id_users:5,
+        })
+        .then((response) => {
+            console.log(response);
+            window.location.reload()
+        });
+};
+
   return (
     <Layout>
       <a href="/">
@@ -92,23 +109,32 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
             <option value="5">5</option>
           </select>
           <input type="submit" value="Rate this movie" className="btn-cmt" onClick={()=> onSubmit()} />
+          
         </div>
       </div>
       <section className="comment">
-        <h4>Review</h4>
-        <div className="display-comment">
+        <a href="/movie/Comment"><h4>Review</h4></a>
+        {/* <div className="display-comment">
           <p>Author</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
             nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.
             Morbi a bibendum metus.{" "}
           </p>
-        </div>
+        </div> */}
         <div className="add-comment">
-          <form action="#" method="post">
-            <textarea name="" id="" cols="100" rows="10"></textarea>
-            <input type="submit" value="Comment" className="btn-cmt" />
-          </form>
+        <form action="#" method='post'>
+                        <textarea 
+                            name="review" 
+                            id="review" 
+                            cols="100" 
+                            rows="10"
+                            onChange={(event)=> setReview(event.target.value)}
+                        >
+                        </textarea>
+                        
+                        <input type="submit" value="Comment" className='btn-cmt' onClick={()=> addReview()} />
+                    </form>
         </div>
       </section>
 
