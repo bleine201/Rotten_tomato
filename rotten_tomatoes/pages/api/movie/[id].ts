@@ -20,7 +20,7 @@ export default async function getMovieById(
         req.body.title,
         req.body.summary,
         req.body.image,
-        req.body.average,
+        req.body.rating,
         id
       );
       res.statusCode = 200;
@@ -30,7 +30,7 @@ export default async function getMovieById(
       res.statusCode = 204;
       res.json(null);
     } else if (req.method === "GET") {
-      const get = await db.get("SELECT * FROM movies WHERE id = ?", id);
+      const get = await db.get("SELECT m.* ,(select AVG(rating) from ratings where id_movies =  m.id) as 'rating'FROM movies as m WHERE id = ?", id);
       res.statusCode = 200;
       res.json(get);
     } else {
