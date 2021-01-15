@@ -74,7 +74,7 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <div className="movie">
         <div className="main">
           <h2>
-            {movie.title} <span>{movie.rating}</span>{" "}
+            {movie.title} <span className='rt'>{movie.rating}</span>{" "}
           </h2>
           <div className="fav">
             <Favorite />
@@ -95,9 +95,6 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <p>
             <span>Release:</span> {movie.date}
           </p>
-          <p>
-            <span>Average Rating:</span> {movie.rating}
-          </p>
           <label for="pet-select">Rate me:</label>
 
           <select name="pets" id="pet-select"  onChange={(event) => setRating(event.target.value)}>
@@ -107,8 +104,8 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>
-          <input type="submit" value="Rate this movie" className="btn-cmt" onClick={()=> onSubmit()} />
+          </select><br/>
+          <input type="submit" value="Rate this movie" className="btn-rt" onClick={()=> onSubmit()} />
           
         </div>
       </div>
@@ -192,6 +189,16 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
             color: white;
           }
 
+          select {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            font-weight: bold;
+            border: none;
+            background: yellow;
+            color: black;
+          }
+
           textarea {
             border-radius: 15px;
             background: ghostwhite;
@@ -211,8 +218,29 @@ const Movieid = ({ movie }: InferGetStaticPropsType<typeof getStaticProps>) => {
             margin-bottom: 3%;
           }
 
+          .btn-rt {
+            float: right;
+            border: none;
+            padding: 1%;
+            border-radius: 5px;
+            background: yellow;
+            color: black;
+            margin-bottom: 3%;
+          }
+          
+          .btn-rt:hover {
+            background:black;
+            color:white;
+          }
+
+          .rt {
+            font-size: 25px;
+            font-weight:bold;
+            color:yellow;
+          }
+
           span {
-            font-size: 20px;
+            font-size:20px;
           }
 
           .fav {

@@ -21,7 +21,13 @@ export default function index({
       <div className="tbuser">
         <a href="/admin">
           <button className="back">Back</button>
-        </a>
+          </a>
+          <a href="/admin/users/add">
+                    <button className="add">
+                      <AddCircleIcon />
+                    </button>
+          </a>
+        
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -40,11 +46,7 @@ export default function index({
                 <td>{user.email}</td>
                 <td>{user.admin}</td>
                 <td>
-                  <a href="/admin/users/add">
-                    <button className="add">
-                      <AddCircleIcon />
-                    </button>
-                  </a>
+                  
                   <a href={`/admin/users/edit/${user.id}`}>
                     <button className="edit">
                       <Edit />

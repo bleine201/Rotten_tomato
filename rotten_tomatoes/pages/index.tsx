@@ -7,6 +7,7 @@ import Filter from "../components/Filter";
 import { GetStaticProps } from "next";
 import { InferGetStaticPropsType } from "next";
 import { useState } from "react";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 export default function Home({
   movies: moviesProp,
@@ -17,9 +18,9 @@ export default function Home({
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id='up'>
       <Layout>
-        <main>
+        <main >
           <MainCarousel />
         </main>
         <nav className="filter">
@@ -45,6 +46,12 @@ export default function Home({
 
           ))}
         </article>
+        <div className="arrow">
+          <a href="#up">
+            <button className="aw"><ArrowUpwardIcon/></button>
+          </a>
+
+        </div>
       </Layout>
     </div>
   );

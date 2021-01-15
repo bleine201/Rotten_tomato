@@ -17,25 +17,26 @@ const Filter = ({setMovies}) => {
     };
   
   return (
-    <div className="">
-      <div className="flex">
-        <form action="javascript:void(0)" onSubmit={onSubmit} className="filter" >
+    <div className="filter">
+      <div className="">
+        <form action="javascript:void(0)" onSubmit={onSubmit} className="flex" >
         <p>
           <TuneIcon />
           Filter by
         </p>
+
           <input type="date" placeholder="email" id="date" className="date" onChange={(event) => setDate(event.target.value)}/>
           <input type="text" placeholder="genre" id="genre" className="genre" onChange={(event) => setGenre(event.target.value)}/>
           <input type="text" placeholder="producer" id="producer" className="producer" onChange={(event) => setProducer(event.target.value)}/>
           <a>
-            <input className="btnn" type="submit" value="submit" />
+            <input className="btnn" type="submit" value="Research" />
           </a>
         </form>
       </div>
       <style jsx>
         {`
           .filter {
-            width: 50%;
+            width: 80%;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -44,10 +45,12 @@ const Filter = ({setMovies}) => {
             padding-bottom: 1%;
             padding-top: 1%;
             border-radius: 10px;
+            background:ghostwhite;
           }
           .flex {
             display: flex;
             justify-content: space-between;
+            margin-right: 3%;
             
           }
           p {
@@ -59,6 +62,21 @@ const Filter = ({setMovies}) => {
           }
           .date {
             margin-right: 2rem;
+            border-radius:10px;
+            border:none;
+            background: #80d0c7;
+          }
+          .genre {
+            margin-right: 2rem;
+            border-radius:10px;
+            border:none;
+            background: #80d0c7;
+          }
+          .producer {
+            margin-right: 2rem;
+            border-radius:10px;
+            border:none;
+            background: #80d0c7;
           }
           select {
             text-align: center;
@@ -75,6 +93,17 @@ const Filter = ({setMovies}) => {
             border-radius: 7px;
             appearance: none;
             background: #80d0c7;
+          }
+          .btnn {
+            height: 5rem;
+            width: 6rem;
+            border: none;
+            background:#0093E9;
+            border-radius:10px;
+          }
+          .btnn:hover {
+            background:black;
+            color:white;
           }
         `}
       </style>

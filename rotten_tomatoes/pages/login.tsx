@@ -99,7 +99,7 @@ const login = () => {
           input {
             background: #80d0c7;
             border-radius: 5px;
-            color: white;
+            color: black;
             border: none;
           }
         `}
