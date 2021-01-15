@@ -5,7 +5,6 @@ import Edit from "@material-ui/icons/Edit";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { GetStaticProps } from "next";
 import { InferGetStaticPropsType } from "next";
-
 import axios from "axios";
 
 export default function index({
