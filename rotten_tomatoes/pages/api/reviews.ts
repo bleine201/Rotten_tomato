@@ -13,7 +13,7 @@ export default async function getreviews(
 
   if (req.method === "GET") {
     const review = await db.all(
-      "select m.title, f.review,u.name from reviews as f inner  join  users as u on (f.id_users = u.id) inner join movies as m "
+      "select f.review, (select title from movies where id = f.id_movies) as 'title',(select name from users where id = f.id_users) as 'name' from reviews as f "
     );
     res.json(review);
   }

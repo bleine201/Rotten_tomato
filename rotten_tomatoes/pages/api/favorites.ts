@@ -13,7 +13,7 @@ export default async function getfavorite(
 
   if (req.method === "GET") {
     const favorite = await db.all(
-      "select m.title,u.name from favorites as f inner  join  users as u on (f.id_users = u.id) inner join movies as m "
+      "select f.favorite, (select title from movies where id = f.id_movies) as 'title',(select name from users where id = f.id_users) as 'name' from favorites as f "
     );
     res.json(favorite);
   }
