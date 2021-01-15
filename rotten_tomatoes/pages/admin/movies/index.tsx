@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   
-    const res = await fetch('http://localhost:3000/api/allMovies');
+    const res = await fetch('http://localhost:3000/api/movies');
     const movies = await res.json();
 
     return {

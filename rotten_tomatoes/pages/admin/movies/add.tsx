@@ -12,7 +12,7 @@ const add = () => {
 
     const onSubmit = async () => {
         axios
-            .post("http://localhost:3000/api/allMovies", {
+            .post("http://localhost:3000/api/postMovie", {
                 title:title,
                 summary:summary,
                 genre:genre,

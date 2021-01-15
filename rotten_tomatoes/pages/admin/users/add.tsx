@@ -9,7 +9,7 @@ const add = () => {
 
   const onSubmit = async () => {
     axios
-      .post("http://localhost:3000/api/allUsers", {
+      .post("http://localhost:3000/api/postUser", {
         name: username,
         email: email,
         admin: admin,
