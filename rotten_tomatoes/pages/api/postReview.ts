@@ -11,15 +11,10 @@ export default async function getfavorite(
     driver: sqlite3.Database,
   });
 
-  if (req.method === "GET") {
-    const favorite = await db.all(
-      "select m.title,u.name from favorites as f inner  join  users as u on (f.id_users = u.id) inner join movies as m "
-    );
-    res.json(favorite);
-  }
-  if (req.body.id_movies != "") {
+  if (req.body.review != "") {
   const post = await db.run(
-    "INSERT INTO favorites (id_movies, id_users) VALUES (?,?) ",
+    "INSERT INTO reviews (review, id_movies, id_users) VALUES (?,?,?) ",
+    req.body.review,
     req.body.id_movies,
     req.body.id_users
   );

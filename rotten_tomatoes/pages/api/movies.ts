@@ -11,25 +11,12 @@ export default async function getmovies(
     driver: sqlite3.Database,
   });
 
-  if (req.method === "GET") {
+  if (req.body.title != "") {
     const movies = await db.all(
       "select m.*,(select AVG(r.rating) from ratings as r  where id_movies = m.id) as 'rating' from movies as m "
     );
     res.statusCode = 200;
     res.json(movies);
   }
-  if (req.body.title != "") {
-    const post = await db.run(
-      "INSERT INTO movies (title, summary, image, average, date, genre, producer) VALUES (?,?,?,?,?,?,?) ",
-      req.body.title,
-      req.body.summary,
-      req.body.image,
-      req.body.average,
-      req.body.date,
-      req.body.genre,
-      req.body.producer
-    );
-    res.statusCode = 200;
-    res.json(post);
-  }
+  
 }
