@@ -35,7 +35,7 @@ const login = () => {
           <p>Password:</p>
           <input type="password" placeholder="password" ref={passRef} />
           <br />
-          <Link href="/index">
+          <Link href="/">
             <a>
               <input
                 onClick={handleLogin}

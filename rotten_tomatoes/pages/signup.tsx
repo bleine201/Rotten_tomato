@@ -49,7 +49,7 @@ const signup = () => {
             ref={passwordConfRef}
           />
           <br />
-          <Link href="/index">
+          <Link href="/login">
             <a>
               <input
                 onClick={handleSignup}

@@ -1,22 +1,9 @@
-import { verify } from "jsonwebtoken";
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { secret } from "../../api/secret";
+import { hash } from "bcrypt";
 
-export const authenticated = (fn: NextApiHandler) => async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
-  verify(req.cookies.auth!, secret, async function (err, decoded) {
-    if (!err && decoded) {
-      return await fn(req, res);
-    }
-    res.status(401).json({ message: "Sorry you are not authenticated" });
-  });
-};
-
-export default authenticated(async function getUsers(
+export default async function getusers(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -24,7 +11,9 @@ export default authenticated(async function getUsers(
     filename: "./rotten_tomatoes.sqlite",
     driver: sqlite3.Database,
   });
-  const users = await db.all("SELECT id, email, name FROM users");
 
-  res.json(users);
-});
+  if (req.method === "GET") {
+    const users = await db.all("select * from users");
+    res.json(users);
+  }
+}
