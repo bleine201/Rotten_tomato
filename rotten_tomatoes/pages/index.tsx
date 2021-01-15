@@ -6,10 +6,13 @@ import { Card } from 'react-bootstrap';
 import Filter from '../components/Filter';
 import { GetStaticProps } from 'next';
 import { InferGetStaticPropsType } from 'next';
+import { useState } from 'react';
 
 
 
-export default function Home({ movies }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ movies : moviesProp}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [movies , setMovies] = useState(moviesProp)
+
   return (
     <div className={styles.container}>
       <Layout>
@@ -18,7 +21,7 @@ export default function Home({ movies }: InferGetStaticPropsType<typeof getStati
           <MainCarousel />
         </main>
         <nav className='filter'>
-          <Filter />
+          <Filter setMovies={setMovies} />
         </nav>
           <article className={styles.mov}>
           {movies.map((movie) => (

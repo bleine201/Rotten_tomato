@@ -7,7 +7,7 @@ import { GetStaticPaths } from 'next';
 import { InferGetStaticPropsType } from 'next';
 
 export async function getStaticPaths() {
-    const res = await fetch('http://localhost:3000/api/allMovies')
+    const res = await fetch('http://localhost:3000/api/movies')
     const movies = await res.json()
 
     const paths = movies.map((movie: { id: { toString: () => any; }; }) => ({

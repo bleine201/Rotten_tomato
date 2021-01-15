@@ -3,20 +3,16 @@ import TuneIcon from "@material-ui/icons/Tune";
 import axios from 'axios';
 
 
-const Filter = () => {
+const Filter = ({setMovies}) => {
     const [genre, setGenre] = useState("");
     const [date, setDate] = useState("");
     const [producer, setProducer] = useState("");
   
     const onSubmit = async () => {
       axios
-        .post("http://localhost:3000/api/filter", {
-          genre: genre,
-          date: date,
-          producer: producer,
-        })
-        .then((response) => {
-          console.log(response);
+        .get(`http://localhost:3000/api/filter?date=${date}&genre=${genre}&producer=${producer}`)
+        .then(({data}) => {
+          setMovies(data)
         });
     };
   
