@@ -1,18 +1,36 @@
-import React from "react";
+import { useState } from "react";
 import TuneIcon from "@material-ui/icons/Tune";
+import axios from 'axios';
+
 
 const Filter = () => {
+    const [genre, setGenre] = useState("");
+    const [date, setDate] = useState("");
+    const [producer, setProducer] = useState("");
+  
+    const onSubmit = async () => {
+      axios
+        .post("http://localhost:3000/api/filter", {
+          genre: genre,
+          date: date,
+          producer: producer,
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    };
+  
   return (
     <div className="">
       <div className="flex">
-        <form className="filter">
+        <form action="javascript:void(0)" onSubmit={onSubmit} className="filter" >
         <p>
           <TuneIcon />
           Filter by
         </p>
-          <input type="date" placeholder="email" id="date" className="date"/>
-          <input type="text" placeholder="genre" id="genre" className="genre" />
-          <input type="text" placeholder="producer" id="producer" className="producer"/>
+          <input type="date" placeholder="email" id="date" className="date" onChange={(event) => setDate(event.target.value)}/>
+          <input type="text" placeholder="genre" id="genre" className="genre" onChange={(event) => setGenre(event.target.value)}/>
+          <input type="text" placeholder="producer" id="producer" className="producer" onChange={(event) => setProducer(event.target.value)}/>
           <a>
             <input className="btnn" type="submit" value="submit" />
           </a>
